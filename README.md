@@ -7,7 +7,7 @@ INTEGRANTES:
 **GERSON ASAEL CHICA LOVOS**
 ---------------------------------------
 **ALEJANDRO ERNESTO CHICAS MARTINEZ**
-
+-----------------------------------------
 
 Preguntas
 • ¿Qué ventajas tiene en comparación con poner todo el código en
