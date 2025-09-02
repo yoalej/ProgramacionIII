@@ -1,5 +1,5 @@
 # ProgramacionIII
-todo sobre programacionIII
+Todo sobre programacionIII
 
 
 
@@ -27,5 +27,7 @@ En resumen, la clase Viaje se enfoca en los datos de un solo viaje, mientras que
 
 • ¿De qué manera el uso de GitHub facilitó el trabajo colaborativo
 en equipo? Den un ejemplo concreto
-
+facil uno trabajaba un a clase y el otro otra clase , luego de trbajar ambas clases
+Despues para el principal se usaana ambas clase entonces uno trabajo lo primero y el otro solo sgrego detalles y revicion de que si esta bien y las preguntas.
+trabajo dividido es iguala mayor velocidad.
 

@@ -5,7 +5,7 @@ def main():
 
     print("=== Registro de Viajes ===")
     while True:
-        ruta = input("Ingrese la ruta de viaje que realizo: ")
+        ruta = input("Ingrese la ruta del viaje que realizo: ")
         costo = float(input("Ingrese el costo del viaje($): "))
         tiempo = int(input("Ingrese el tiempo (minutos) que tardo en el viaje: "))
 
