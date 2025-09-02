@@ -14,7 +14,7 @@ Preguntas
 • ¿Qué ventajas tiene en comparación con poner todo el código en
 un solo archivo o utilizar módulos?
 Una de las ventajas mas claras seria que se ahorra un proceso repetitivo, esto hace que el trabajo sea mas rapido ya que los modulos hacen lo que ya se les programo...
-Otra de las ventajas es por su organizacion y mantenibilidad: en un solo archivo, el codigo se vuelve dificil de manejar, pero gracias a los modulos se vuelve en prolemas mas pequeños que facilitan su forma de mantenimiento y la comprencion del codigo.
+Otra de las ventajas es por su organizacion y mantenibilidad: en un solo archivo, el codigo se vuelve dificil de manejar, pero gracias a los modulos se vuelve en problemas mas pequeños que facilitan su forma de mantenimiento y la comprencion del codigo.
 Tambien estas como se pueden crear aparte se puede hacer un trabajo colaborativo mas facilmente y se haria mas rapido.
 
 
