@@ -20,6 +20,7 @@ Tambien estas como se pueden crear aparte se puede hacer un trabajo colaborativo
 
 • ¿Cómo aplicaron la Programación Orientada a Objetos en su
 solución? Describan el papel de las clases creadas.
+
 Clase Viaje: El papel de esta clase es representar un viaje individual. Funciona como un plano que define las características que todo viaje debe tener: una ruta, un costo y un tiempo. Sus atributos son self.ruta, self.costo y self.tiempo. Además, tiene un método especial __str__ que define cómo se debe mostrar un objeto Viaje cuando lo imprime, facilitando la visualización de sus datos.
 
 Clase GestorViajes: El papel de esta clase es gestionar una colección de objetos Viaje. Actúa como un contenedor y controlador para la lógica principal de la aplicación. Su principal atributo es self.viajes, una lista donde se almacenan todos los objetos de la clase Viaje que se crean. Sus métodos son los que realizan las acciones principales: agregar_viaje() crea nuevos objetos Viaje y los añade a la lista, mostrar_viajes() recorre esa lista para mostrar cada viaje, y resumen() calcula y presenta los totales.
@@ -27,8 +28,7 @@ Clase GestorViajes: El papel de esta clase es gestionar una colección de objeto
 En resumen, la clase Viaje se enfoca en los datos de un solo viaje, mientras que la clase GestorViajes se encarga de la lógica de gestión y manipulación de múltiples viajes.
 
 • ¿De qué manera el uso de GitHub facilitó el trabajo colaborativo
-en equipo? Den un ejemplo concreto
-facil uno trabajaba un a clase y el otro otra clase , luego de trbajar ambas clases
-Despues para el principal se usaana ambas clase entonces uno trabajo lo primero y el otro solo sgrego detalles y revicion de que si esta bien y las preguntas.
-trabajo dividido es iguala mayor velocidad.
+en equipo? Den un ejemplo concreto.
+Nos facilito porque uno trabajaba una clase y el otro otra clase , luego de trabajar ambas clases faltaba la principal haci que uno la trabajaria primero...y el otro solo agrego detalles y revision de que si esta bien y las preguntas con sus respuestas.
+trabajo dividido es igual a mayor velocidad y mas eficacia.
 
