@@ -1,89 +1,102 @@
-import tkinter as tk
-from tkinter import messagebox, ttk
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QComboBox, QMessageBox, QVBoxLayout, QHBoxLayout
 
-def calcular_imc():
-    try:
-        nombre = entry_nombre.get()
-        peso = float(entry_peso.get())
-        altura = float(entry_altura.get())
+class CalculadoraIMC(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Calculadora de IMC - PyQt5")
+        self.setGeometry(200, 200, 400, 300)
+        self.initUI()
 
-        # Convertir unidades si es necesario
-        if combo_peso.get() == "lb":
-            peso = peso * 0.453592  # lb → kg
+    def initUI(self):
+        layout = QVBoxLayout()
 
-        if combo_altura.get() == "cm":
-            altura = altura / 100  # cm → m
+        # Nombre
+        self.lbl_nombre = QLabel("Nombre:")
+        self.entry_nombre = QLineEdit()
+        layout.addWidget(self.lbl_nombre)
+        layout.addWidget(self.entry_nombre)
 
-        if altura <= 0:
-            raise ValueError("La altura debe ser mayor que cero")
+        # Peso
+        self.lbl_peso = QLabel("Peso:")
+        h_peso = QHBoxLayout()
+        self.entry_peso = QLineEdit()
+        self.combo_peso = QComboBox()
+        self.combo_peso.addItems(["kg", "lb"])
+        h_peso.addWidget(self.entry_peso)
+        h_peso.addWidget(self.combo_peso)
+        layout.addWidget(self.lbl_peso)
+        layout.addLayout(h_peso)
 
-        # Calcular IMC
-        imc = peso / (altura ** 2)
-        # Determinar categoría
-        if imc < 18.5:
-            categoria = "Bajo peso"
-        elif imc < 25:
-            categoria = "Normal"
-        elif imc < 30:
-            categoria = "Sobrepeso"
-        else:
-            categoria = "Obesidad"
+        # Altura
+        self.lbl_altura = QLabel("Altura:")
+        h_altura = QHBoxLayout()
+        self.entry_altura = QLineEdit()
+        self.combo_altura = QComboBox()
+        self.combo_altura.addItems(["m", "cm"])
+        h_altura.addWidget(self.entry_altura)
+        h_altura.addWidget(self.combo_altura)
+        layout.addWidget(self.lbl_altura)
+        layout.addLayout(h_altura)
 
-        lbl_resultado.config(text=f"{nombre}, tu IMC es {imc:.2f} ({categoria})")
+        # Botones
+        h_botones = QHBoxLayout()
+        self.btn_calcular = QPushButton("Calcular IMC")
+        self.btn_calcular.clicked.connect(self.calcular_imc)
+        self.btn_limpiar = QPushButton("Limpiar")
+        self.btn_limpiar.clicked.connect(self.limpiar)
+        h_botones.addWidget(self.btn_calcular)
+        h_botones.addWidget(self.btn_limpiar)
+        layout.addLayout(h_botones)
 
-    except ValueError:
-        messagebox.showerror("Error", "Por favor ingresa números válidos para peso y altura.")
+        # Resultado
+        self.lbl_resultado = QLabel("")
+        layout.addWidget(self.lbl_resultado)
 
-def limpiar():
-    entry_nombre.delete(0, tk.END)
-    entry_peso.delete(0, tk.END)
-    entry_altura.delete(0, tk.END)
-    lbl_resultado.config(text="")
-    combo_peso.set("kg")
-    combo_altura.set("m")
+        self.setLayout(layout)
 
-# -------------------------
-# Ventana principal
-# -------------------------
-ventana = tk.Tk()
-ventana.title("Calculadora de IMC Flexible")
-ventana.geometry("400x350")
+    def calcular_imc(self):
+        try:
+            nombre = self.entry_nombre.text()
+            peso = float(self.entry_peso.text())
+            altura = float(self.entry_altura.text())
 
-# Nombre
-tk.Label(ventana, text="Nombre:", font=("Arial", 12)).pack(pady=5)
-entry_nombre = tk.Entry(ventana, font=("Arial", 12))
-entry_nombre.pack(pady=5)
+            # Convertir unidades si es necesario
+            if self.combo_peso.currentText() == "lb":
+                peso *= 0.453592  # lb → kg
+            if self.combo_altura.currentText() == "cm":
+                altura /= 100  # cm → m
 
-# Peso
-tk.Label(ventana, text="Peso:", font=("Arial", 12)).pack(pady=5)
-frame_peso = tk.Frame(ventana)
-frame_peso.pack(pady=5)
-entry_peso = tk.Entry(frame_peso, font=("Arial", 12))
-entry_peso.pack(side=tk.LEFT, padx=5)
-combo_peso = ttk.Combobox(frame_peso, values=["kg", "lb"], state="readonly", width=5)
-combo_peso.pack(side=tk.LEFT, padx=5)
-combo_peso.set("kg")
+            if altura <= 0:
+                raise ValueError("La altura debe ser mayor que cero")
 
-# Altura
-tk.Label(ventana, text="Altura:", font=("Arial", 12)).pack(pady=5)
-frame_altura = tk.Frame(ventana)
-frame_altura.pack(pady=5)
-entry_altura = tk.Entry(frame_altura, font=("Arial", 12))
-entry_altura.pack(side=tk.LEFT, padx=5)
-combo_altura = ttk.Combobox(frame_altura, values=["m", "cm"], state="readonly", width=5)
-combo_altura.pack(side=tk.LEFT, padx=5)
-combo_altura.set("m")
+            # Calcular IMC
+            imc = peso / (altura ** 2)
+            if imc < 18.5:
+                categoria = "Bajo peso"
+            elif imc < 25:
+                categoria = "Normal"
+            elif imc < 30:
+                categoria = "Sobrepeso"
+            else:
+                categoria = "Obesidad"
 
-# Botones
-frame_botones = tk.Frame(ventana)
-frame_botones.pack(pady=10)
-btn_calcular = tk.Button(frame_botones, text="Calcular IMC", font=("Arial", 12), command=calcular_imc)
-btn_calcular.pack(side=tk.LEFT, padx=10)
-btn_limpiar = tk.Button(frame_botones, text="Limpiar", font=("Arial", 12), command=limpiar)
-btn_limpiar.pack(side=tk.LEFT, padx=10)
+            self.lbl_resultado.setText(f"{nombre}, tu IMC es {imc:.2f} ({categoria})")
 
-# Resultado
-lbl_resultado = tk.Label(ventana, text="", font=("Arial", 12, "italic"))
-lbl_resultado.pack(pady=20)
+        except ValueError:
+            QMessageBox.warning(self, "Error", "Ingresa números válidos para peso y altura")
 
-ventana.mainloop()
+    def limpiar(self):
+        self.entry_nombre.clear()
+        self.entry_peso.clear()
+        self.entry_altura.clear()
+        self.combo_peso.setCurrentIndex(0)
+        self.combo_altura.setCurrentIndex(0)
+        self.lbl_resultado.setText("")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = CalculadoraIMC()
+    window.show()
+    sys.exit(app.exec_())
+
