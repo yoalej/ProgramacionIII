@@ -4,6 +4,10 @@ INTEGRANTES:
 ---------------------------------------
 **ALEJANDRO ERNESTO CHICAS MARTINEZ**
 
+**E kag.py es el que contiene el codigo verdadero los demas fueron pruebas 
+y como el tiempo nos quedo corto poreso lo dejamos haci.
+
+
 
 a. Describe brevemente de qué trata el dataset utilizado
 El dataset youtube-top-100-songs-2025.csv contiene información sobre las 100 canciones más populares de YouTube en el año 2025. Incluye métricas clave como el título del video, el número de vistas (view_count), la duración de la canción, el canal que la publicó y la cantidad de seguidores de dicho canal (channel_follower_count).
